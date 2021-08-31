@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="myActivity"
+            type="com.example.diapertracker.MainActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/eggshell"
+        android:padding="16dp"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/main_act_iv_diaper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/content_desc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_diaper_icon"
+            tools:ignore="ImageContrastCheck" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/main_act_rb_dry"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_act_iv_diaper"
+            app:layout_constraintVertical_bias="0.0">
+
+            <RadioButton
+                android:id="@+id/main_act_rb_dirty"
+                style="@style/font_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rb_dirty"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
+
+            <RadioButton
+                android:id="@+id/main_act_rb_wet"
+                style="@style/font_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rb_wet"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
+
+            <RadioButton
+                android:id="@+id/main_act_rb_dry"
+                style="@style/font_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rb_dry"
+                android:textAlignment="center"
+                tools:ignore="TextContrastCheck" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/main_act_et_time"
+            style="@style/font_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="false"
+            android:ems="10"
+            android:hint="@string/time_et"
+            android:inputType="time"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textColorHint="@color/black_corel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/main_act_bt_add"
+            style="@style/font_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/melon"
+            android:text="@string/btn_add"
+            android:textAlignment="center"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/main_act_bt_clear"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_act_et_time"
+            app:layout_constraintVertical_bias="0.01999998" />
+
+        <Button
+            android:id="@+id/main_act_bt_clear"
+            style="@style/font_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:backgroundTint="@color/melon"
+            android:text="@string/btn_clear"
+            android:textAlignment="center"
+            app:cornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/main_act_bt_add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/main_act_bt_add"
+            app:layout_constraintTop_toTopOf="@+id/main_act_bt_add" />
+
+        <TextView
+            android:id="@+id/main_act_tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{myActivity.diaperTracker}"
+            android:textAlignment="center"
+            android:textAppearance="@style/font_style"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_act_bt_add"
+            app:layout_constraintVertical_bias="0.01999998" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/main_act_tv_diaperCount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_act_tv_header">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/main_act_iv_baby1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/desc"
+                    app:srcCompat="@drawable/ic_baby_icon" />
+
+                <TextView
+                    android:id="@+id/main_act_tv_diaperChanges"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/placeholder_diaper_changes"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/font_style" />
+
+                <ImageView
+                    android:id="@+id/main_act_iv_baby2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/desc"
+                    app:srcCompat="@drawable/ic_baby_icon" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/main_act_tv_diaperCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/count"
+            android:textAlignment="center"
+            android:textAppearance="@style/font_style"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
