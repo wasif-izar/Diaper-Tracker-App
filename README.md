@@ -1,2 +1,2 @@
 # Diaper Tracker App
- A basic diaper tracker app
+ A simple diaper tracker app
